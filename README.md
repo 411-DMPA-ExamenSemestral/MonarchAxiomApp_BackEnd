@@ -23,10 +23,9 @@ npm install
 ### 2. Configurar las Variables de Entorno
 Abre el archivo [`.env`](file:///c:/Users/mario/Downloads/Api_Juegos/MonarchAxiomApp_BackEnd/.env) y asegúrate de configurar tu cadena de conexión de MongoDB:
 ```ini
-MONGO_URI=mongodb://localhost:27017/monarch_axiom
+MONGO_URI=mongodb+srv://marioVH_user:mario1234@dmpa-411-monarchaxiomdb.tfkrefg.mongodb.net/MonarchAxiomDB?retryWrites=true&w=majority
 PORT=3000
 ```
-*(Reemplaza con tu cadena de conexión si utilizas MongoDB Atlas).*
 
 ### 3. Iniciar el servidor en modo desarrollo
 Para correr el servidor con reinicio automático al guardar cambios (usando `nodemon`):
@@ -39,3 +38,21 @@ Si deseas iniciarlo en producción sin reinicio automático:
 ```bash
 npm start
 ```
+
+---
+
+## Endpoints de la API (Documentación)
+
+El servidor correrá en `http://localhost:3000` por defecto.
+
+### 🎮 Videojuegos (`/api/juegos`)
+
+* **`GET /api/juegos`**
+  * Obtiene la lista completa de videojuegos registrados en la colección `Juegos` de MongoDB Atlas.
+* **`GET /api/juegos/:id`**
+  * Obtiene la información detallada de un videojuego mediante su `_id` numérico (ej. `/api/juegos/2`).
+
+### 🖼️ Portadas de Videojuegos (`/images/:nombre_imagen`)
+
+* **`GET /images/:nombre_imagen`**
+  * Sirve las portadas estáticas de los juegos (ej. `/images/donkey-kong-bananza.jpg`).
