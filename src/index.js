@@ -15,6 +15,9 @@ const app = express();
 app.use(cors());
 app.use(express.json()); // Para poder leer req.body en formato JSON
 
+// Servir imágenes estáticas para las portadas de los juegos
+app.use('/images', express.static('public/images'));
+
 // Ruta raíz informativa
 app.get('/', (req, res) => {
   res.json({
@@ -48,5 +51,3 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Servidor de desarrollo iniciado exitosamente en http://localhost:${PORT}`);
 });
-
-//hshshsh
