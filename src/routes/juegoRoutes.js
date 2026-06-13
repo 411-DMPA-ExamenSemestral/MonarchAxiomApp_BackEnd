@@ -7,3 +7,5 @@ router.get('/', getJuegos);
 router.get('/:id', getJuegoById);
 
 export default router;
+
+//si
