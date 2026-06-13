@@ -4,6 +4,7 @@ import cors from 'cors';
 import connectDB from './config/db.js';
 import juegoRoutes from './routes/juegoRoutes.js';
 import usuarioRoutes from './routes/usuarioRoutes.js';
+import resenaRoutes from './routes/resenaRoutes.js';
 
 // Cargar variables de entorno desde el archivo .env
 dotenv.config();
@@ -31,6 +32,7 @@ app.get('/', (req, res) => {
 // Registrar rutas del sistema
 app.use('/api/juegos', juegoRoutes);
 app.use('/api/usuarios', usuarioRoutes);
+app.use('/api/resenas', resenaRoutes);
 
 // Middleware para capturar rutas no existentes (404)
 app.use((req, res, next) => {
