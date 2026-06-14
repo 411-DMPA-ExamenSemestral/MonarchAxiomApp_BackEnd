@@ -39,3 +39,20 @@ export const getResenasByJuego = async (req, res) => {
     res.status(500).json({ message: 'Error al buscar las reseñas de este juego', error: error.message });
   }
 };
+
+export const crearResena = async (req, res) => {
+  try {
+    const ultimaResena = await Resena.findOne().sort({ _id: -1 });
+    const nuevoId = ultimaResena ? ultimaResena._id + 1 : 1;
+
+    const nuevaResena = new Resena({
+      _id: nuevoId,
+      ...req.body
+    });
+
+    const resenaGuardada = await nuevaResena.save();
+    res.status(201).json(resenaGuardada);
+  } catch (error) {
+    res.status(500).json({ message: 'Error al crear la reseña', error: error.message });
+  }
+};
