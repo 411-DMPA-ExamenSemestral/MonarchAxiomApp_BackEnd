@@ -62,3 +62,26 @@ export const loginUsuario = async (req, res) => {
     res.status(500).json({ message: 'Error en el servidor al intentar iniciar sesión', error: error.message });
   }
 };
+
+export const actualizarUsuario = async (req, res) => {
+  try {
+    const idNumero = Number(req.params.id);
+    if (isNaN(idNumero)) {
+      return res.status(400).json({ message: 'El ID proporcionado debe ser un número válido' });
+    }
+
+    const usuarioActualizado = await Usuario.findByIdAndUpdate(
+      idNumero,
+      req.body,
+      { new: true }
+    );
+
+    if (!usuarioActualizado) {
+      return res.status(404).json({ message: 'Usuario no encontrado en la base de datos' });
+    }
+
+    res.json(usuarioActualizado);
+  } catch (error) {
+    res.status(500).json({ message: 'Error al actualizar el usuario', error: error.message });
+  }
+};
